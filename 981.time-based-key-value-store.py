@@ -41,8 +41,6 @@ class TimeMap:
 
         return tlist[l-1][1]
 
-t = TimeMap()
-t.TestCase1()
 # Your TimeMap object will be instantiated and called as such:
 # obj = TimeMap()
 # obj.set(key,value,timestamp)
