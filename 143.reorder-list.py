@@ -59,6 +59,32 @@ class Solution:
             r_curr = r_next_node
         prev.next = r_curr
 
+    def reorderListConcise(self, head):
+        if not head:
+            return
+
+        # Step 1: Split the list into two halves
+        # slow and fast are start points, fast moves twice as fast as slow
+        slow = fast = head
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+
+        # Now slow is the start point of the second half
+        # Reverse the second half
+        prev, curr = None, slow
+        while curr:
+            next_node = curr.next
+            curr.next = prev
+            prev = curr
+            curr = next_node
+
+        # Step 2: Merge the two halves
+        first, second = head, prev
+        while second.next:
+            first.next, first = second, first.next
+            second.next, second = first, second.next
+
     def reorderListnSquared(self, head: Optional[ListNode]) -> None:
         """
         Do not return anything, modify head in-place instead.
