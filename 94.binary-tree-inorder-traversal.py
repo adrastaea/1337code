@@ -13,6 +13,23 @@
 #         self.right = right
 class Solution:
     def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        # beats 90%
+        stack, output = [], []
+        while True:
+            # append leftmost path to stack
+            while root:
+                stack.append(root)
+                root = root.left
+            # return once no more nodes
+            if not stack:
+                return output
+            node = stack.pop()
+            output.append(node.val)
+            root = node.right
+
+
+    def inorderTraversalRecursive(self, root: Optional[TreeNode]) -> List[int]:
+        # beats 21%
         if root is None:
             return []
         output = []
