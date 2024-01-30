@@ -43,23 +43,24 @@
 #
 
 # @lc code=start
-from collections import defaultdict
 
 class Solution:
+
     def isAnagram(self, s: str, t: str) -> bool:
-        # beats 90%, 65%
+        from collections import defaultdict
+    #     # beats 90%, 65%
         if len(s) != len(t):
             return False
 
         s_counts = defaultdict(int)
         t_counts = defaultdict(int)
-        for c in s:
-            s_counts[c] += 1
-        for c in t:
-            t_counts[c] += 1
+        for i in range(len(s)):
+            s_counts[s[i]] += 1
+            t_counts[t[i]] += 1
         if len(t_counts.keys()) == len(s_counts.keys()):
             return all({s_counts[c] == t_counts[c] for c in s_counts})
         return False
 
-
+    def isAnagramAlt(self, s: str, t: str) -> bool:
+        return sorted(s) == sorted(t)
 # @lc code=end
